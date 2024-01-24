@@ -274,29 +274,25 @@ class QuillRawEditorState extends EditorState
     }
 
     final onImagePaste = widget.configurations.onImagePaste;
-    // if (onImagePaste != null) {
-    //   if (clipboard != null) {
-    //     final reader = await clipboard.read();
-    //     if (!reader.canProvide(Formats.png)) {
-    //       return;
-    //     }
-    //     reader.getFile(Formats.png, (value) async {
-    //       final image = value;
+    if (onImagePaste != null) {
+      final image = await Pasteboard.image;
 
-    //       final imageUrl = await onImagePaste(await image.readAll());
-    //       if (imageUrl == null) {
-    //         return;
-    //       }
+      if (image == null) {
+        return;
+      }
 
-    //       controller.replaceText(
-    //         textEditingValue.selection.end,
-    //         0,
-    //         BlockEmbed.image(imageUrl),
-    //         null,
-    //       );
-    //     });
-    //   }
-    // }
+      final imageUrl = await onImagePaste(image);
+      if (imageUrl == null) {
+        return;
+      }
+
+      controller.replaceText(
+        textEditingValue.selection.end,
+        0,
+        BlockEmbed.image(imageUrl),
+        null,
+      );
+    }
   }
 
   /// Select the entire text value.
