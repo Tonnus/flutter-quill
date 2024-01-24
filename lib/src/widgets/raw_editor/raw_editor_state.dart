@@ -11,11 +11,9 @@ import 'package:flutter/scheduler.dart' show SchedulerBinding;
 import 'package:flutter/services.dart'
     show Clipboard, ClipboardData, HardwareKeyboard, LogicalKeyboardKey, RawKeyDownEvent, SystemChannels, TextInputControl;
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart' show KeyboardVisibilityController;
-import 'package:html/parser.dart' as html_parser;
 import 'package:pasteboard/pasteboard.dart' show Pasteboard;
 // import 'package:super_clipboard/super_clipboard.dart';
 
-import '../../../quill_delta.dart';
 import '../../models/documents/attribute.dart';
 import '../../models/documents/document.dart';
 import '../../models/documents/nodes/block.dart';
